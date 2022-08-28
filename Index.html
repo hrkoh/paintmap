@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Paint Map（仮）</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/openlayers/4.6.5/ol.css" integrity="sha256-rQq4Fxpq3LlPQ8yP11i6Z2lAo82b6ACDgd35CKyNEBw=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/openlayers/4.6.5/ol.js" integrity="sha256-77IKwU93jwIX7zmgEBfYGHcmeO0Fx2MoWB/ooh9QkBA=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js" integrity="sha256-FPJJt8nA+xL4RU6/gsriA8p8xAeLGatoyTjldvQKGdE=" crossorigin="anonymous"></script>
+
+    <!-- Pointer events polyfill for old browsers, see https://caniuse.com/#feat=pointer -->
+    <script src="https://unpkg.com/elm-pep@1.0.6/dist/elm-pep.js"></script>
+    <!-- The lines below are only needed for old environments like Internet Explorer and Android 4.x -->
+    <script src="https://cdn.polyfill.io/v3/polyfill.min.js?features=fetch,requestAnimationFrame,Element.prototype.classList,TextDecoder"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/3.18.3/minified.js"></script>
+    
+    <link rel="stylesheet" href="https://unpkg.com/ol-popup@4.0.0/src/ol-popup.css">
+    <script src="https://unpkg.com/ol-popup@4.0.0/dist/ol-popup.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/ol-geocoder@latest/dist/ol-geocoder.min.css">
+    <script src="https://unpkg.com/ol-geocoder"></script>
+
+    <style>
+      .map {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body style="background: gray">
+    <div class="container-fluid">
+      <div style="margin:10px;" class="row">
+        <div class="col-1">
+          <button id="saveBtn" style="width: 60px; height: 35px; border: 1px solid ; border-radius: 10%;">save</button>
+        </div>
+        <div class="col-2"></div>
+        <div class="col-auto" style="margin: auto;">
+          <button id="recBtn" style="width: 35px; height: 35px; background: red; border: 2px solid; border-radius: 50%;"></button>
+        </div>
+        <div class="col-1">
+          <img src="icon_R_0405.png" style="width: 35px; height: 35px;">
+        </div>
+        <div class="col-1">
+          <select id="strokeWidth" class="feature-style form-control" style="width: 70px; height: 35px;">
+            <option value="1">1 px</option>>
+            <option value="2" selected="selected">2 px</option>>
+            <option value="4">4 px</option>>
+            <option value="8">8 px</option>>
+          </select>
+        </div>
+        <div class="col-1">
+          <input type="color" value="#ff0000" style="width: 70px; height: 35px;" list="colorlist">
+          <datalist id="colorlist">
+            <option value="#1abc9c"></option>
+            <option value="#16a085"></option>
+            <option value="#2ecc71"></option>
+            <option value="#27ae60"></option>
+            <option value="#3498db"></option>
+            <option value="#2980b9"></option>
+            <option value="#9b59b6"></option>
+            <option value="#8e44ad"></option>
+            <option value="#34495e"></option>
+            <option value="#2c3e50"></option>
+            <option value="#f1c40f"></option>
+            <option value="#f39c12"></option>
+            <option value="#e67e22"></option>
+            <option value="#d35400"></option>
+            <option value="#e74c3c"></option>
+            <option value="#c0392b"></option>
+            <option value="#ecf0f1"></option>
+          </datalist>
+        </div>
+      </div>
+    </div>
+    
+    <div id="map" class="map"></div>
+
+    <form class="form-inline">
+    </form>
+    <script src="main.js"></script>
+  </body>
+</html>
