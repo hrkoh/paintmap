@@ -7,7 +7,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/openlayers/4.6.5/ol.css" integrity="sha256-rQq4Fxpq3LlPQ8yP11i6Z2lAo82b6ACDgd35CKyNEBw=" crossorigin="anonymous" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/openlayers/4.6.5/ol.js" integrity="sha256-77IKwU93jwIX7zmgEBfYGHcmeO0Fx2MoWB/ooh9QkBA=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+    
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js" integrity="sha256-FPJJt8nA+xL4RU6/gsriA8p8xAeLGatoyTjldvQKGdE=" crossorigin="anonymous"></script>
 
@@ -24,53 +28,64 @@
 
     <style>
       .map {
-        width: 100%;
-        height: 100%;
+        width: 88%;
+        height: 80%;
       }
     </style>
   </head>
   <body style="background: gray">
     <div class="container-fluid">
-      <div style="margin:10px;" class="row">
+      <div style="padding-top: 5px; margin:7px;" class="row">
         <div class="col-1">
-          <button id="saveBtn" style="width: 60px; height: 35px; border: 1px solid ; border-radius: 10%;">save</button>
+          <button id="saveBtn" style="width: 60px; height: 35px; border: 1px solid ; border-radius: 10%;">Save</button>
         </div>
-        <div class="col-2"></div>
-        <div class="col-auto" style="margin: auto;">
+        <div class="col-1">
+          <button id="openBtn" style="width: 60px; height: 35px; border: 1px solid ; border-radius: 10%;">Open</button>
+        </div>
+        <div class="col-3"></div>
+        <div class="col-1" style="margin: auto;">
           <button id="recBtn" style="width: 35px; height: 35px; background: red; border: 2px solid; border-radius: 50%;"></button>
         </div>
         <div class="col-1">
-          <img src="icon_R_0405.png" style="width: 35px; height: 35px;">
+          <img id="eraserImg" src="icon_R_0405.png" style="width: 35px; height: 35px;">
         </div>
         <div class="col-1">
-          <select id="strokeWidth" class="feature-style form-control" style="width: 70px; height: 35px;">
-            <option value="1">1 px</option>>
-            <option value="2" selected="selected">2 px</option>>
-            <option value="4">4 px</option>>
-            <option value="8">8 px</option>>
+          <select id="strokeWidth" class="feature-style form-control" style="width: 85px; height: 35px;">
+            <option value="1">1 px</option>
+            <option value="2">2 px</option>
+            <option value="4" selected="selected">4 px</option>
+            <option value="8">8 px</option>
+            <option value="16">16 px</option>
           </select>
         </div>
         <div class="col-1">
-          <input type="color" value="#ff0000" style="width: 70px; height: 35px;" list="colorlist">
+          <input id="strokeColor" type="color" value="#ff0000" style="width: 70px; height: 35px;" list="colorlist">
           <datalist id="colorlist">
-            <option value="#1abc9c"></option>
-            <option value="#16a085"></option>
-            <option value="#2ecc71"></option>
-            <option value="#27ae60"></option>
-            <option value="#3498db"></option>
-            <option value="#2980b9"></option>
-            <option value="#9b59b6"></option>
-            <option value="#8e44ad"></option>
-            <option value="#34495e"></option>
-            <option value="#2c3e50"></option>
-            <option value="#f1c40f"></option>
-            <option value="#f39c12"></option>
-            <option value="#e67e22"></option>
-            <option value="#d35400"></option>
-            <option value="#e74c3c"></option>
-            <option value="#c0392b"></option>
-            <option value="#ecf0f1"></option>
+            <option value="#000000"></option>
+            <option value="#808080"></option>
+            <option value="#0000ff"></option>
+            <option value="#008000"></option>
+            <option value="#00ff00"></option>
+            <option value="#ffff00"></option>
+            <option value="#ffa500"></option>
+            <option value="#a52a2a"></option>
+            <option value="#ff0000"></option>
+            <option value="#ffc0cb"></option>
+            <option value="#ff00ff"></option>
+            <option value="#800080"></option>
           </datalist>
+        </div>
+        <div class="col-1">
+          <img src="ei-sticky.png" style="width: 30px; height: 35px;">
+        </div>
+        <div class="col-1">
+          <select id="tileSelect" class="feature-style form-control" style="height: 35px;">
+            <option value="0" selected>地理院タイル（淡色地図）</option>
+            <option value="1">地理院タイル（全国最新写真（シームレス））</option>
+            <option value="2">地理院タイル（色別標高図）</option>
+            <option value="3">地理院タイル（標高タイル（基盤地図情報 数値標高モデル））</option>
+            <option value="4">OpenStreetMap</option>
+          </select>
         </div>
       </div>
     </div>
